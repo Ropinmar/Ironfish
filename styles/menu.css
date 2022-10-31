@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* transition: all 1s; */
+    transition: all 0.5s ease-out;
+}
+
+.background{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../img/fondo-inicio2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.cover{
+    background-color: rgba(117, 207, 208, 0.2);
+    height: 100vh;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h1{
+    color: #FEC260;
+    padding: 40px;
+    font-family: Lemon;
+    font-size: 100px;
+}
+h1:hover{
+    cursor: pointer;
+    color: #F5AA34;
+}
+
+#instructions, #credits, h2{
+    font-family: Love Ya Like A Sister;
+    font-size: 30px;
+    width: 100%;
+    background-color: rgba(236, 152, 70, 0.3);
+    margin: 15px;
+    color: #FEC260;
+    padding: 20px 10px;
+    border: 2px solid #EBEBED;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+}
+a:link{
+    text-decoration: none;
+}
+.instructions-container, .credits-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}
+.show{
+    pointer-events: auto;
+    opacity: 1;
+}
+.instructions-modal, .credits-modal{
+    background-color: rgba(41, 250, 185, 0.7);
+    width: 600px;
+    max-width: 100%;
+    padding: 30px 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.9);
+    text-align: center;
+}
+#close-instructions, #close-credits{
+    font-family: Love Ya Like A Sister;
+    font-size: 30px;
+    width: 30%;
+    height: 30%;
+    background-color: rgba(236, 152, 70, 0.3);
+    margin: 10px 15px;
+    color: rgb(11, 1, 0);
+    padding: 20px 10px;
+    border: 2px solid #EBEBED;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+    font-weight: bold;
+}
+.instructions-modal h3 {
+    font-family: Love Ya Like A Sister;
+    color: rgba(6, 6, 69, 0.9);
+    font-size: 40px;
+}
+.instructions-modal p {
+    font-family: Love Ya Like A Sister;
+    color: black;
+    font-size: 30px;
+}
+
+.credits-modal h3 {
+    font-family: Love Ya Like A Sister;
+    color: rgba(6, 6, 69, 0.9);
+    font-size: 40px;
+}
+.credits-modal p {
+    font-family: Love Ya Like A Sister;
+    color: black;
+    font-size: 30px;
+}
+
+
+#credits:hover{
+    color:#F7AD00;
+    border-color: dodgerblue;
+    cursor: pointer;
+}
+#instructions:hover{
+    color:#F7AD00;
+    border-color: dodgerblue;
+    cursor: pointer;
+}
+#close-instructions:hover{
+    color:#F7AD00;
+    border-color: dodgerblue;
+    cursor: pointer;
+}
+#close-credits:hover{
+    color:#F7AD00;
+    border-color: dodgerblue;
+    cursor: pointer;
+}
+#newgame:hover{
+    color:#F7AD00;
+    border-color: dodgerblue;
+    cursor: pointer;
+}
+
