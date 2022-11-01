@@ -22,7 +22,12 @@
                     <div class="instructions-container" id="instructions-containerId">
                         <div class="instructions-modal">
                             <h3>How to play</h3>
-                            <p>To move around the window, take the food and avoid other fish<br> Top: W. <br>Bottom: S.<br>Rigth: D.<br>Left: A</p>
+                            <p>To move around the window and avoid other fish
+                                <br> Top: W. <br>Bottom: S.<br>Rigth: D.<br>Left: A<br>Fire: Space
+                            </p><hr>
+                            <p><br>You gain energy when your fish has it´s food falling in the mouth.<br> You have 10 lives, do not touch other fish.
+                                <br>If you fire to an other fish your score increases.
+                            </p>    
                             <button id="close-instructions">Close</button>
                         </div>
                     </div>
@@ -32,13 +37,19 @@
                     <div class="credits-container" id="credits-containerId">
                         <div class="credits-modal">
                             <h3>Credits</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            <p>Design and animation:<br> By Rodrigo Pinzon<br>Some ideas: taken from course and google</p>
                             <button id="close-credits">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div id="audio" class="audio-div">
+            <audio controls>
+                <source src="./sounds/aquarium-sound-first-page.mp3" type="audio/mpeg"/>
+            </audio>
+        </div>
+        
         <script src="./scripts/script.js"></script>
     </body>
 </html>

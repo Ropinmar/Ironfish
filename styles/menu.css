@@ -40,9 +40,9 @@ h1:hover{
     font-family: Love Ya Like A Sister;
     font-size: 30px;
     width: 100%;
-    background-color: rgba(236, 152, 70, 0.3);
+    background-color: rgba(236, 152, 70, 0.2);
     margin: 15px;
-    color: #FEC260;
+    color: #e29b21;
     padding: 20px 10px;
     border: 2px solid #EBEBED;
     border-radius: 15px;
@@ -96,17 +96,31 @@ a:link{
     font-family: Love Ya Like A Sister;
     color: rgba(6, 6, 69, 0.9);
     font-size: 40px;
+    background-color: rgba(250, 194, 68, 0.6);
+    margin-top: 0px;
+    margin-left: 90px;
+    margin-bottom: 20px;
+    margin-right: 90px;
+    border-radius: 50px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
 }
 .instructions-modal p {
     font-family: Love Ya Like A Sister;
     color: black;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .credits-modal h3 {
     font-family: Love Ya Like A Sister;
     color: rgba(6, 6, 69, 0.9);
     font-size: 40px;
+    background-color: rgba(250, 194, 68, 0.6);
+    margin-top: 0px;
+    margin-left: 90px;
+    margin-bottom: 20px;
+    margin-right: 90px;
+    border-radius: 50px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
 }
 .credits-modal p {
     font-family: Love Ya Like A Sister;
