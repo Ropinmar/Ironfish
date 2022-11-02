@@ -6,7 +6,7 @@
     margin: 0;
     padding: 0;
     /* transition: all 1s; */
-    transition: all 0.5s ease-out;
+    transition: all 1s ease-in-out;
 }
 
 .background{
@@ -24,25 +24,34 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    /* margin-left: 150px; */
 }
 h1{
     color: #FEC260;
     padding: 40px;
     font-family: Lemon;
     font-size: 100px;
+    /* display: flex; */
+    margin-right: 60px;
 }
 h1:hover{
     cursor: pointer;
-    color: #F5AA34;
+    color: #86f171;
 }
-
-#instructions, #credits, h2{
+/* .options{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+} */
+#instructions, #credits, #audio, h2{
     font-family: Love Ya Like A Sister;
     font-size: 30px;
-    width: 100%;
+    font-weight: bolder;
+    width: 80%;
     background-color: rgba(236, 152, 70, 0.2);
     margin: 15px;
-    color: #e29b21;
+    color: #ffa509;
     padding: 20px 10px;
     border: 2px solid #EBEBED;
     border-radius: 15px;
@@ -52,7 +61,7 @@ h1:hover{
 a:link{
     text-decoration: none;
 }
-.instructions-container, .credits-container{
+.instructions-container, .credits-container, .audio-container{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,7 +77,7 @@ a:link{
     pointer-events: auto;
     opacity: 1;
 }
-.instructions-modal, .credits-modal{
+.instructions-modal, .credits-modal, .audio-modal{
     background-color: rgba(41, 250, 185, 0.7);
     width: 600px;
     max-width: 100%;
@@ -77,7 +86,7 @@ a:link{
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.9);
     text-align: center;
 }
-#close-instructions, #close-credits{
+#close-instructions, #close-credits, #close-audio{
     font-family: Love Ya Like A Sister;
     font-size: 30px;
     width: 30%;
@@ -131,27 +140,44 @@ a:link{
 
 #credits:hover{
     color:#F7AD00;
-    border-color: dodgerblue;
+    border-color: rgb(53, 220, 20);
     cursor: pointer;
+    background-color: rgba(182, 50, 50, 0.6);
 }
 #instructions:hover{
     color:#F7AD00;
-    border-color: dodgerblue;
+    border-color: rgb(255, 240, 30);
     cursor: pointer;
+    background-color: rgba(101, 30, 116, 0.6);
 }
 #close-instructions:hover{
     color:#F7AD00;
-    border-color: dodgerblue;
+    border-color: rgb(255, 240, 30);
     cursor: pointer;
+    background-color: rgba(101, 30, 116, 0.6);
 }
 #close-credits:hover{
     color:#F7AD00;
-    border-color: dodgerblue;
+    border-color: rgb(53, 220, 20);
     cursor: pointer;
+    background-color: rgba(182, 50, 50, 0.6);
 }
 #newgame:hover{
     color:#F7AD00;
-    border-color: dodgerblue;
+    border-color: rgb(197, 4, 84);
     cursor: pointer;
+    background-color: rgba(2, 121, 8, 0.6);
+}
+#audio:hover{
+    color:#1403af;
+    border-color: rgb(0, 108, 216);
+    cursor: pointer;
+    background-color: rgba(172, 160, 2, 0.6);
+}
+#close-audio:hover{
+    color:#1403af;
+    border-color: rgb(0, 108, 216);
+    cursor: pointer;
+    background-color: rgba(172, 160, 2, 0.6);
 }
 

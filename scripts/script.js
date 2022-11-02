@@ -6,6 +6,12 @@ const openCredits = document.getElementById('credits');
 const creditsContainerId = document.getElementById('credits-containerId');
 const closeCredits = document.getElementById('close-credits');
 
+const openAudio = document.getElementById("audio");
+const audioContainerId = document.getElementById("audio-containerId");
+const closeAudio = document.getElementById("close-audio")
+
+
+
 openInstructions.addEventListener('click', ()=>{
     instructionsContainerId.classList.add('show');
     // alert('hola');
@@ -24,3 +30,11 @@ openCredits.addEventListener('click', ()=>{
 closeCredits.addEventListener('click', ()=>{
     creditsContainerId.classList.remove('show');
 });
+
+
+openAudio.addEventListener('click', () => {
+    audioContainerId.classList.add('show');
+});
+closeAudio.addEventListener('click', () => {
+    audioContainerId.classList.remove('show');
+})

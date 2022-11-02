@@ -50,11 +50,26 @@ const bombImg = new Image();
 bombImg.src ="../img/boom-img.gif"
 
 //imagen de explosion
-const explosion = new Image();
-explosion.src = "../img/boom-img-touch.gif"
+const explosionPic = new Image();
+explosionPic.src = "../img/boom-img-touch.gif"
 
 //medidas canvass
 //ancho 1000 - alto 600
+
+//boton de pausa
+const pauseB = document.getElementById('pause');//--------------------------------------------------------------------------------------
+//boton de goal 
+const openGoal = document.getElementById('open-goal');
+const closeGoal = document.getElementById('close-goal');
+const modal = document.getElementById('modal');
+
+openGoal.addEventListener('click', () => {
+    modal.showModal();
+});
+closeGoal.addEventListener('click', () => {
+    modal.close();
+})
+
 
 //lista enemigos
 const enemies = [];
@@ -62,6 +77,8 @@ const enemies = [];
 const allFood = [];
 //lista de bombas
 const allBombs= [];
+//lista de explosiones
+const allExplosion = [];
 //medidas del rect 100 * 30
 // ctx.fillRect(450,320,100,30);
 
@@ -71,7 +88,7 @@ const allBombs= [];
 class Fish{
     constructor(ctx, positionX, positionY, image){
         this.name = "Juanito"
-        this.lives = 10;
+        this.lives = 5;
         this.energy = 0;
         this.score = 0;
         this.positionX = positionX;
@@ -102,7 +119,7 @@ class Fish{
         }
     }
     fire(){
-        console.log("disparar");
+        // console.log("disparar");
         if(allBombs.length < 10){
             const theBomb = new Bomba(ctx, player.positionX + 130, player.positionY + 20, bombImg);
             //agregar al arreglo allBombs
@@ -136,6 +153,7 @@ const player = new Fish(ctx, 120, 300, fishImage0);
 //console.log(player);
 
 let counter = 0;
+let forPause = false;
 //Definir enemigo como el personaje del pez
 
 class Enemy{
@@ -205,15 +223,35 @@ class Bomba{
         //this.ctx.fillRect(this.positionX, this.positionY,100,30);
         this.ctx.drawImage(this.image, this.positionX, this.positionY, 40, 40);
     }
-    
-    
+};
+
+class Explosion{
+    constructor(ctx, positionX, positionY, image){
+        this.positionX = positionX;
+        this.positionY = positionY;
+        this.image = image;
+        this.ctx = ctx;
+        this.size = 50;
+    }
+    //dibujar
+    drawn(){
+        //this.ctx.fillRect(this.positionX, this.positionY,100,30);
+        this.ctx.drawImage(this.image, this.positionX, this.positionY, this.size, this.size);
+        this.positionX -= 5;
+        this.positionY -= 5;
+        this.size += 30;
+    }
 }
 //instancia de bomba la ponemos en el metodo fire
 
 // let timer = 0;
 
 //setInterval para el video juego ----------------------------------------------------
-setInterval(()=>{
+
+let firstInterval;
+
+function startGame(){
+firstInterval = setInterval(()=>{
     // console.log("Ejecuta");
 
     //borrando
@@ -239,7 +277,7 @@ setInterval(()=>{
             enemies.splice(positionEnemy, 1);
             //sigue vivo
             if(player.lives == 0){
-                alert('Game over!!!!')
+                swal('GAME OVER!!!!', 'TRY AGAIN', 'error')
             }
         }
         if(fishEnemy.positionX < 0){
@@ -264,8 +302,8 @@ setInterval(()=>{
             //quitar comida del array
             allFood.splice(positionFood, 1);
             //sigue vivo
-            if(player.energy == 100){
-                alert('You Win!!!!')
+            if(player.energy >= 100 && player.score >= 10){
+                swal('YOU WIN!!!!', 'GOOD JOB', 'success');
             }
         }
     });
@@ -279,26 +317,36 @@ setInterval(()=>{
             allBombs.splice(indexBomb, 1);
         }
         //colisión con enenmigo
-        console.log("bombX", theBomb.positionX);
+        // console.log("bombX", theBomb.positionX);
         enemies.forEach((fishEnemy, indexEnemy)=>{
-            console.log("enemyX", fishEnemy.positionX);
+            // console.log("enemyX", fishEnemy.positionX);
             if(
                 theBomb.positionX + 20 >= fishEnemy.positionX &&
                 theBomb.positionY + 20 >= fishEnemy.positionY &&
                 theBomb.positionY <= fishEnemy.positionY + 60
-                ){
+            ) {
                 //quitar bomba
                 allBombs.splice(indexBomb, 1);
                 //quitar enemigo
                 enemies.splice(indexEnemy, 1);
                 player.score += 1;
+                //explosion
+                // console.log("Explosion");
+                const theExplosion = new Explosion(ctx, theBomb.positionX + 20, theBomb.positionY, explosionPic);
+                allExplosion.push(theExplosion);
             }
         });
     });
 
     //dibujar misiles
-    ctx.fillText(`Bombs: ${allBombs.length}`, 600, 40)
-    
+    ctx.fillText(`Bombs: ${allBombs.length}`, 840, 80);
+
+    allExplosion.forEach((theExplosion, indexExplosion) => {
+        theExplosion.drawn()
+        if(theExplosion.size > 90){
+            allExplosion.splice(indexExplosion, 1)
+        }
+    });
 
 }, 1000 / 6);
 //setInterval para la comida 
@@ -314,7 +362,7 @@ setInterval(()=>{
         const widhtX = Math.floor(Math.random()*940);
         const foodForFish = new Food(ctx, widhtX, 0, fishFood0);
         allFood.push(foodForFish);
-        console.log(allFood);
+        // console.log(allFood);
     }
 }, 2000);
 //setInterval para el enemigo 
@@ -331,10 +379,12 @@ setInterval(()=>{
         const heightY = Math.floor(Math.random()*510);
         const fishEnemy = new Enemy(ctx, 1000, heightY, enemyImage0);
         enemies.push(fishEnemy);
-        console.log(enemies);
+        // console.log(enemies);
     }
 }, 2500);
+};
 
+startGame();
 function updateFrames (){
     player.image = fishFrames[counter];
     if(counter < 3){
@@ -360,7 +410,7 @@ function updateFrames (){
 
 //escuchar teclado 
 window.addEventListener('keyup', (event)=>{
-    console.log('tecla presionada', event.code);
+    // console.log('tecla presionada', event.code);
 
     /*
     switch(event.code){
@@ -389,7 +439,7 @@ window.addEventListener('keyup', (event)=>{
                 player.goUp();
                 break;
             case "Space":
-                player.eat();
+                player.fire();;
                 break;
         }
     */
@@ -402,11 +452,21 @@ window.addEventListener('keyup', (event)=>{
         player.goLeft();
     }else if(event.code == "KeyW" || event.code == "ArrowUp"){
         player.goUp();
-    }else if(event.code == "Space"){
+    }else if(event.code == "KeyP"){
         player.fire();
     }
 });
 
-
+//poniendo pausa
+pauseB.addEventListener('click', () => {
+    if(forPause == false){
+        clearInterval(firstInterval);
+        forPause = true;
+    }else{
+        startGame();
+        forPause = false;
+    }
+    //swal('pause');
+})
 
 

@@ -4,7 +4,7 @@
     margin: 0;
     padding: 0;
     /* transition: all 1s; */
-    transition: all 1s ease-out;
+    transition: all 1s ease-in-out;
 }
 canvas{
     border: 6px solid rgb(247, 155, 27);
@@ -26,4 +26,117 @@ canvas{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+button{
+    display: flex;
+    width: 100%;
+    height: 60px;
+    background: #04a5b1;
+    color: rgb(0, 0, 0);
+    font-family: Love Ya Like A Sister;
+    font-size: 30px;
+    
+}
+#pause{
+    background: #217906;
+}
+#link-to-main{
+    text-decoration: none;
+    text-decoration-style: none;
+    color: rgb(0, 0, 0);
+}
+#open-goal, .button{
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 1s ease all;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(247, 155, 27, 0.9);
+    border: none;
+    color: rgb(0, 0, 0);
+
+}
+.sound-container{
+    display: flex;
+    width: 10vw;
+    height: 8vh;
+    padding: 30px;
+    position: fixed;
+    top: 0;
+    right: 80px;
+    bottom:100px;
+    left: 100px;
+}
+.pause-container{
+    display: flex;
+    width: 10vw;
+    height: 8vh;
+    padding: 30px;
+    position: fixed;
+    top: 80px;
+    right: 80px;
+    bottom:100px;
+    left: 100px;
+}
+.button:hover{
+    background-color: blueviolet;
+}
+/* .pause-container:hover{
+    background-color: blueviolet;
+} */
+#pause:hover{
+    background-color: coral;
+}
+#open-goal{
+    position: fixed;
+    top: 190px;
+    right: 80px;
+    bottom:100px;
+    left: 130px;
+    width: 6vw;
+    background-color: rgb(111, 6, 138);
+}
+#open-goal:hover{
+    background-color: indianred;
+}
+#modal::backdrop{
+    background-color: rgba(0, 0, 0, .55);
+}
+#modal{
+    background-color: rgba(70, 95, 240, 0.5);
+    border-color:lemonchiffon;
+    position: fixed;
+    top: 190px;
+    right: 80px;
+    bottom: 100px;
+    left: 130px;
+    width: 25vw;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 0 10px 0;
+}
+#modal h2, p{
+    font-family: Love Ya Like A Sister;
+    align-items: center;
+    padding-left: 60px;
+    font-size: 35px;
+    color:goldenrod;
+}
+#modal p{
+    font-size: 25px;
+    color: white;
+}
+#close-goal{
+    /* position: fixed; */
+    width: 6vw;
+    height: 6vh;
+    margin: 20px 0 0 130px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+}
+#close-goal:hover{
+    background-color: crimson;
+    cursor: pointer;
 }

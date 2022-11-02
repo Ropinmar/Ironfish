@@ -7,15 +7,29 @@
     <title>IronFish</title>
     <link rel="icon" type="image/x-icon" href="./img/icon-page.png">
     <link rel="stylesheet" href="./styles/videogame.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
     <div class="wallpaper">
         <canvas width="1000" height="600" id="canvas"></canvas>
-        <script src="./scripts/videogame.js"></script>
+        <div class="sound-container">
+            <button type="button" class="button"><a href="./index.html" id="link-to-main">Back</a></button>
+        </div>
+        <div class="pause-container">
+            <button type="button" class="button" id="pause"><span>Pause</span></button>
+        </div>
+        <button id="open-goal">Goal</button>
+        <dialog id="modal">
+            <h2>Your goal is:</h2>
+            <p>Get a score = 10.<br>And <br>The energy equal to 100.</p>
+            <button id="close-goal">Close</button>
+        </dialog>
     </div>
-    <style>
+    <script src="./scripts/videogame.js"></script>
+
+    <!-- <style>
         @import url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap');
-    </style>
+    </style> -->
     <!-- <audio autoplay>
         <source src=".//sounds/aquarium-sound-videogame.mp3" type="audio/mpeg"/>
     </audio> -->
