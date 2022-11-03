@@ -5,6 +5,8 @@ const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 //propiedades texto
 ctx.font = "24px Love Ya Like A Sister";
+
+
 //imagenes personaje
 const fishImage0 = new Image();
 const fishImage1 = new Image();
@@ -69,7 +71,19 @@ openGoal.addEventListener('click', () => {
 closeGoal.addEventListener('click', () => {
     modal.close();
 })
+//audio
+const theAudio = document.getElementById('audio-2');
+const closeAudio = document.getElementById('close-audio');
+// const openAudio2 = document.getElementById("audio-2");
+// const audioContainerId2 = document.getElementById("audio-containerId-2");
+// const closeAudio2 = document.getElementById("close-audio-2");
 
+// openAudio2.addEventListener('click', () => {
+//     audioContainerId2.classList.add('show');
+// });
+// closeAudio2.addEventListener('click', () => {
+//     audioContainerId2.classList.remove('show');
+// });
 
 //lista enemigos
 const enemies = [];
@@ -132,6 +146,14 @@ class Fish{
         this.ctx.drawImage(this.image, this.positionX, this.positionY, 150, 90);
 
         //vidas
+        this.ctx.fillStyle= "rgba(0, 0, 150, 0.7)";
+        // this.ctx.fontSize = "55px";
+        this.ctx.fillRect(20, 20, 140, 70);
+        //cuadros para que se noten las letras
+        this.ctx.fillStyle= "rgba(0, 0, 150, 0.7)";
+        // this.ctx.fontSize = "55px";
+        this.ctx.fillRect(830, 20, 140, 70);
+        this.ctx.fillStyle = "white";
         this.ctx.fillText(`Lives: ${this.lives}`, 40, 40);
         //energia
         this.ctx.fillText(`Energy: ${this.energy}`, 40, 80);
@@ -251,137 +273,137 @@ class Explosion{
 let firstInterval;
 
 function startGame(){
-firstInterval = setInterval(()=>{
-    // console.log("Ejecuta");
+    firstInterval = setInterval(()=>{
+        // console.log("Ejecuta");
 
-    //borrando
-    ctx.clearRect(0, 0, 1000, 600);
-    player.drawn();
-    updateFrames();
-    
-    //recorrer el arreglo de los enemigos y por cada uno dibujarlo y agregarlo en X
-    enemies.forEach((fishEnemy, positionEnemy)=>{
-        fishEnemy.drawn();
-        fishEnemy.goLeft();
-        fishEnemy.image = enemyFrames[counterEnemy];
-        //colision con enemigo
-        //colision en x y colision en y
-        if(
-            fishEnemy.positionX <= player.positionX + 110 && 
-            player.positionX  <= fishEnemy.positionX + 120 &&
-            player.positionY <= fishEnemy.positionY + 60 &&
-            player.positionY + 70 >= fishEnemy.positionY
-            ){
-            player.updateLives();
-            //quitar enemigo de array
-            enemies.splice(positionEnemy, 1);
-            //sigue vivo
-            if(player.lives == 0){
-                swal('GAME OVER!!!!', 'TRY AGAIN', 'error')
-            }
-        }
-        if(fishEnemy.positionX < 0){
-            //quitar enemigo de array
-            enemies.splice(positionEnemy, 1);
-        }
-    });
-
-    //recorrer arreglo de comida y por cada uno dibujarlo y agregarlo en y
-    allFood.forEach((foodForFish, positionFood)=>{
-        foodForFish.drawn();
-        foodForFish.goDown();
-        foodForFish.image = foodFrames[counterFood];
+        //borrando
+        ctx.clearRect(0, 0, 1000, 600);
+        player.drawn();
+        updateFrames();
         
-        //Colision con comida
-        if(
-            foodForFish.positionY >= player.positionY + 40 &&
-            player.positionX <= foodForFish.positionX + 50 &&
-            player.positionX + 100 >= foodForFish.positionX
-            ){
-            player.updateEnergy();
-            //quitar comida del array
-            allFood.splice(positionFood, 1);
-            //sigue vivo
-            if(player.energy >= 100 && player.score >= 10){
-                swal('YOU WIN!!!!', 'GOOD JOB', 'success');
-            }
-        }
-    });
-    //console.log(player.positionX, fishEnemy.positionX);
-    //recorrer el arreglo de bombas y por cada uno dibujarlo y agregarlo en x
-    allBombs.forEach((theBomb, indexBomb)=>{
-        theBomb.drawn();
-        theBomb.goRight();
-        //quitar bomba si sale del cuadro 
-        if(theBomb.positionX + 20 > 1000){
-            allBombs.splice(indexBomb, 1);
-        }
-        //colisión con enenmigo
-        // console.log("bombX", theBomb.positionX);
-        enemies.forEach((fishEnemy, indexEnemy)=>{
-            // console.log("enemyX", fishEnemy.positionX);
+        //recorrer el arreglo de los enemigos y por cada uno dibujarlo y agregarlo en X
+        enemies.forEach((fishEnemy, positionEnemy)=>{
+            fishEnemy.drawn();
+            fishEnemy.goLeft();
+            fishEnemy.image = enemyFrames[counterEnemy];
+            //colision con enemigo
+            //colision en x y colision en y
             if(
-                theBomb.positionX + 20 >= fishEnemy.positionX &&
-                theBomb.positionY + 20 >= fishEnemy.positionY &&
-                theBomb.positionY <= fishEnemy.positionY + 60
-            ) {
-                //quitar bomba
-                allBombs.splice(indexBomb, 1);
-                //quitar enemigo
-                enemies.splice(indexEnemy, 1);
-                player.score += 1;
-                //explosion
-                // console.log("Explosion");
-                const theExplosion = new Explosion(ctx, theBomb.positionX + 20, theBomb.positionY, explosionPic);
-                allExplosion.push(theExplosion);
+                fishEnemy.positionX <= player.positionX + 110 && 
+                player.positionX  <= fishEnemy.positionX + 120 &&
+                player.positionY <= fishEnemy.positionY + 60 &&
+                player.positionY + 70 >= fishEnemy.positionY
+                ){
+                player.updateLives();
+                //quitar enemigo de array
+                enemies.splice(positionEnemy, 1);
+                //sigue vivo
+                if(player.lives == 0){
+                    swal('GAME OVER!!!!', 'TRY AGAIN', 'error')
+                }
+            }
+            if(fishEnemy.positionX < 0){
+                //quitar enemigo de array
+                enemies.splice(positionEnemy, 1);
             }
         });
-    });
 
-    //dibujar misiles
-    ctx.fillText(`Bombs: ${allBombs.length}`, 840, 80);
+        //recorrer arreglo de comida y por cada uno dibujarlo y agregarlo en y
+        allFood.forEach((foodForFish, positionFood)=>{
+            foodForFish.drawn();
+            foodForFish.goDown();
+            foodForFish.image = foodFrames[counterFood];
+            
+            //Colision con comida
+            if(
+                foodForFish.positionY >= player.positionY + 40 &&
+                player.positionX <= foodForFish.positionX + 50 &&
+                player.positionX + 100 >= foodForFish.positionX
+                ){
+                player.updateEnergy();
+                //quitar comida del array
+                allFood.splice(positionFood, 1);
+                //sigue vivo
+                if(player.energy >= 50 && player.score >= 5){
+                    swal('YOU WIN!!!!', 'GOOD JOB', 'success');
+                }
+            }
+        });
+        //console.log(player.positionX, fishEnemy.positionX);
+        //recorrer el arreglo de bombas y por cada uno dibujarlo y agregarlo en x
+        allBombs.forEach((theBomb, indexBomb)=>{
+            theBomb.drawn();
+            theBomb.goRight();
+            //quitar bomba si sale del cuadro 
+            if(theBomb.positionX + 20 > 1000){
+                allBombs.splice(indexBomb, 1);
+            }
+            //colisión con enenmigo
+            // console.log("bombX", theBomb.positionX);
+            enemies.forEach((fishEnemy, indexEnemy)=>{
+                // console.log("enemyX", fishEnemy.positionX);
+                if(
+                    theBomb.positionX + 20 >= fishEnemy.positionX &&
+                    theBomb.positionY + 20 >= fishEnemy.positionY &&
+                    theBomb.positionY <= fishEnemy.positionY + 60
+                ) {
+                    //quitar bomba
+                    allBombs.splice(indexBomb, 1);
+                    //quitar enemigo
+                    enemies.splice(indexEnemy, 1);
+                    player.score += 1;
+                    //explosion
+                    // console.log("Explosion");
+                    const theExplosion = new Explosion(ctx, theBomb.positionX + 20, theBomb.positionY, explosionPic);
+                    allExplosion.push(theExplosion);
+                }
+            });
+        });
 
-    allExplosion.forEach((theExplosion, indexExplosion) => {
-        theExplosion.drawn()
-        if(theExplosion.size > 90){
-            allExplosion.splice(indexExplosion, 1)
+        //dibujar misiles
+        ctx.fillText(`Bombs: ${allBombs.length}`, 840, 80);
+
+        allExplosion.forEach((theExplosion, indexExplosion) => {
+            theExplosion.drawn()
+            if(theExplosion.size > 90){
+                allExplosion.splice(indexExplosion, 1)
+            }
+        });
+
+    }, 1000 / 6);
+    //setInterval para la comida 
+    setInterval(()=>{
+        //dibujando comida--------------
+        // foodForFish.goDown();
+        //foodForFish.drawn();
+        
+
+        // crear comida con funcion 
+        if(Math.floor(Math.random()*2) == 1){
+            //salida random en x
+            const widhtX = Math.floor(Math.random()*940);
+            const foodForFish = new Food(ctx, widhtX, 0, fishFood0);
+            allFood.push(foodForFish);
+            // console.log(allFood);
         }
-    });
+    }, 2000);
+    //setInterval para el enemigo 
+    setInterval(()=>{
+        //dibujando enemigo-----------------
+        // fishEnemy.goLeft();
+        // fishEnemy.drawn();
+        
 
-}, 1000 / 6);
-//setInterval para la comida 
-setInterval(()=>{
-    //dibujando comida--------------
-    // foodForFish.goDown();
-    //foodForFish.drawn();
-    
-
-    // crear comida con funcion 
-    if(Math.floor(Math.random()*2) == 1){
-        //salida random en x
-        const widhtX = Math.floor(Math.random()*940);
-        const foodForFish = new Food(ctx, widhtX, 0, fishFood0);
-        allFood.push(foodForFish);
-        // console.log(allFood);
-    }
-}, 2000);
-//setInterval para el enemigo 
-setInterval(()=>{
-    //dibujando enemigo-----------------
-    // fishEnemy.goLeft();
-    // fishEnemy.drawn();
-    
-
-    //crear enemigo con funcion 
-    //Math.random()
-    if(Math.floor(Math.random()*2) == 1){
-        //Salida random en y
-        const heightY = Math.floor(Math.random()*510);
-        const fishEnemy = new Enemy(ctx, 1000, heightY, enemyImage0);
-        enemies.push(fishEnemy);
-        // console.log(enemies);
-    }
-}, 2500);
+        //crear enemigo con funcion 
+        //Math.random()
+        if(Math.floor(Math.random()*2) == 1){
+            //Salida random en y
+            const heightY = Math.floor(Math.random()*510);
+            const fishEnemy = new Enemy(ctx, 1000, heightY + 70, enemyImage0);
+            enemies.push(fishEnemy);
+            // console.log(enemies);
+        }
+    }, 1000);
 };
 
 startGame();

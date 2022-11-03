@@ -8,7 +8,7 @@ const closeCredits = document.getElementById('close-credits');
 
 const openAudio = document.getElementById("audio");
 const audioContainerId = document.getElementById("audio-containerId");
-const closeAudio = document.getElementById("close-audio")
+const closeAudio = document.getElementById("close-audio");
 
 
 
@@ -37,4 +37,4 @@ openAudio.addEventListener('click', () => {
 });
 closeAudio.addEventListener('click', () => {
     audioContainerId.classList.remove('show');
-})
+});

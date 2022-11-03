@@ -5,8 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ironfish</title>
+    <link rel="icon" type="image/x-icon" href="./img/icon-page.png">
+    <link rel="stylesheet" href="./styles/videogame2.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
-    
+    <div class="wallpaper">
+        <canvas width="1000" height="600" id="canvas"></canvas>
+        <div class="sound-container">
+            <button type="button" class="button"><a href="./videogame.html" id="link-to-main">Back</a></button>
+        </div>
+        <div class="pause-container">
+            <button type="button" class="button" id="pause"><span>Pause</span></button>
+        </div>
+        <button id="open-goal">Goal</button>
+        <dialog id="modal">
+            <h2>Your goal is:</h2>
+            <p>Get a score = 10.<br>And <br>The energy equal to 100.</p>
+            <button id="close-goal">Close</button>
+        </dialog>
+    </div>
+    <script src="./scripts/videogame2.js"></script>
 </body>
 </html>
