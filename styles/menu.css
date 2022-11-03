@@ -11,14 +11,14 @@
 
 .background{
     width: 100vw;
-    height: 110vh;
+    height: 100vh;
     background-image: url("../img/fondo-inicio2.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 .cover{
     background-color: rgba(117, 207, 208, 0.2);
-    height: 110vh;
+    height: 80vh;
     padding: 50px;
     display: flex;
     flex-direction: column;
@@ -32,7 +32,7 @@
     align-items: stretch;
     width: 27%;
     margin-top: 0;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 }
 h1{
     color: #FEC260;
@@ -191,4 +191,8 @@ a:link{
     cursor: pointer;
     background-color: rgba(172, 160, 2, 0.6);
 }
-
+#modal-audio{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

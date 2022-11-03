@@ -72,8 +72,16 @@ closeGoal.addEventListener('click', () => {
     modal.close();
 })
 //audio
-// const theAudio = document.getElementById('audio-2');
-// const closeAudio = document.getElementById('close-audio');
+const theAudio = document.getElementById('audio-2');
+const closeAudio = document.getElementById('close-audio');
+const modalAudio = document.getElementById('modal-audio');
+
+theAudio.addEventListener('click', () => {
+    modalAudio.showModal();
+});
+closeAudio.addEventListener('click', () => {
+    modalAudio.close();
+});
 // const openAudio2 = document.getElementById("audio-2");
 // const audioContainerId2 = document.getElementById("audio-containerId-2");
 // const closeAudio2 = document.getElementById("close-audio-2");
