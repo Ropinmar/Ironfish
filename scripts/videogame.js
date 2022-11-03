@@ -12,10 +12,10 @@ const fishImage0 = new Image();
 const fishImage1 = new Image();
 const fishImage2 = new Image();
 const fishImage3 = new Image();
-fishImage0.src = "../img/fish-frame0.gif"
-fishImage1.src = "../img/fish-frame1.gif"
-fishImage2.src = "../img/fish-frame2.gif"
-fishImage3.src = "../img/fish-frame3.gif"
+fishImage0.src = "./img/fish-frame0.gif"
+fishImage1.src = "./img/fish-frame1.gif"
+fishImage2.src = "./img/fish-frame2.gif"
+fishImage3.src = "./img/fish-frame3.gif"
 
 const fishFrames = [fishImage0, fishImage1, fishImage2, fishImage3];
 
@@ -25,11 +25,11 @@ const enemyImage1 = new Image();
 const enemyImage2 = new Image();
 const enemyImage3 = new Image();
 const enemyImage4 = new Image();
-enemyImage0.src = "../img/enemy-frame0.gif"
-enemyImage1.src = "../img/enemy-frame1.gif"
-enemyImage2.src = "../img/enemy-frame2.gif"
-enemyImage3.src = "../img/enemy-frame3.gif"
-enemyImage4.src = "../img/enemy-frame4.gif"
+enemyImage0.src = "./img/enemy-frame0.gif"
+enemyImage1.src = "./img/enemy-frame1.gif"
+enemyImage2.src = "./img/enemy-frame2.gif"
+enemyImage3.src = "./img/enemy-frame3.gif"
+enemyImage4.src = "./img/enemy-frame4.gif"
 
 const enemyFrames = [enemyImage0, enemyImage1, enemyImage2, enemyImage3, enemyImage4];
 
@@ -39,21 +39,21 @@ const fishFood1 = new Image();
 const fishFood2 = new Image();
 const fishFood3 = new Image();
 const fishFood4 = new Image();
-fishFood0.src = "../img/fish-food-frame0.gif"
-fishFood1.src = "../img/fish-food-frame1.gif"
-fishFood2.src = "../img/fish-food-frame2.gif"
-fishFood3.src = "../img/fish-food-frame3.gif"
-fishFood4.src = "../img/fish-food-frame4.gif"
+fishFood0.src = "./img/fish-food-frame0.gif"
+fishFood1.src = "./img/fish-food-frame1.gif"
+fishFood2.src = "./img/fish-food-frame2.gif"
+fishFood3.src = "./img/fish-food-frame3.gif"
+fishFood4.src = "./img/fish-food-frame4.gif"
 
 const foodFrames = [fishFood0, fishFood1, fishFood2, fishFood3, fishFood4];
 
 //imagen de bomba
 const bombImg = new Image();
-bombImg.src ="../img/boom-img.gif"
+bombImg.src ="./img/boom-img.gif"
 
 //imagen de explosion
 const explosionPic = new Image();
-explosionPic.src = "../img/boom-img-touch.gif"
+explosionPic.src = "./img/boom-img-touch.gif"
 
 //medidas canvass
 //ancho 1000 - alto 600
@@ -72,8 +72,8 @@ closeGoal.addEventListener('click', () => {
     modal.close();
 })
 //audio
-const theAudio = document.getElementById('audio-2');
-const closeAudio = document.getElementById('close-audio');
+// const theAudio = document.getElementById('audio-2');
+// const closeAudio = document.getElementById('close-audio');
 // const openAudio2 = document.getElementById("audio-2");
 // const audioContainerId2 = document.getElementById("audio-containerId-2");
 // const closeAudio2 = document.getElementById("close-audio-2");
