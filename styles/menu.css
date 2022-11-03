@@ -11,14 +11,14 @@
 
 .background{
     width: 100vw;
-    height: 100vh;
+    height: 110vh;
     background-image: url("../img/fondo-inicio2.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 .cover{
     background-color: rgba(117, 207, 208, 0.2);
-    height: 100vh;
+    height: 110vh;
     padding: 50px;
     display: flex;
     flex-direction: column;
