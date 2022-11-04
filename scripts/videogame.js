@@ -406,7 +406,7 @@ function startGame(){
         //Math.random()
         if(Math.floor(Math.random()*2) == 1){
             //Salida random en y
-            const heightY = Math.floor(Math.random()*510);
+            const heightY = Math.floor(Math.random()*440);
             const fishEnemy = new Enemy(ctx, 1000, heightY + 70, enemyImage0);
             enemies.push(fishEnemy);
             // console.log(enemies);
