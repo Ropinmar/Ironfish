@@ -15,6 +15,7 @@
     background-image: url("../img/fondo-inicio2.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: rgba(117, 207, 208, 0.2);
 }
 .cover{
     background-color: rgba(117, 207, 208, 0.2);
